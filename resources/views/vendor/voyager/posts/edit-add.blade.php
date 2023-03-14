@@ -80,6 +80,11 @@
                                     @elseif ($row->type == 'relationship')
                                         @include('voyager::formfields.relationship', ['options' => $row->details])
                                     @else
+                                        @if($edit && $row->field == "title")
+                                            @php
+                                                $row->type = "text_area"
+                                            @endphp
+                                        @endif
                                         {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
                                     @endif
 
